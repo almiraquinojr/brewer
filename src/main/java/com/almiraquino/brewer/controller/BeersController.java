@@ -14,13 +14,13 @@ import com.almiraquino.brewer.model.Beer;
 @Controller
 public class BeersController {
 	
-	@RequestMapping("/beers/add")
+	@RequestMapping("/beers/new")
 	public String newBeer(Beer beer) {
 		System.out.println(System.getProperty("classpath"));
 		return "beer/Cadastro";
 	}
 	
-	@RequestMapping(value = "/beers/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/beers/new", method = RequestMethod.POST)
 	public String newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
 			return newBeer(beer);
@@ -32,7 +32,7 @@ public class BeersController {
 		return "redirect:/beers/add";
 	}
 	
-	@RequestMapping("/beers/new")
+	@RequestMapping("/beers/add")
 	public String add() {
 		return "beer/add-beer";
 	}
