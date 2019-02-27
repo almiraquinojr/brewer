@@ -16,6 +16,7 @@ public class BeersController {
 	
 	@RequestMapping("/beers/add")
 	public String newBeer(Beer beer) {
+		System.out.println(System.getProperty("classpath"));
 		return "beer/Cadastro";
 	}
 	
