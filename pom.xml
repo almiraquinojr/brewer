@@ -6,7 +6,7 @@
 	<groupId>com.almiraquino</groupId>
 	<artifactId>brewer</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	
+
 
 	<packaging>war</packaging>
 
@@ -24,7 +24,8 @@
 		<servlet.version>4.0.1</servlet.version>
 		<thymeleaf.version>3.0.11.RELEASE</thymeleaf.version>
 		<hibernate-validator.version>6.0.14.Final</hibernate-validator.version>
-		
+		<thymeleaf-dialect-layout.version>2.3.0</thymeleaf-dialect-layout.version>
+
 	</properties>
 
 	<build>
@@ -86,6 +87,13 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate-validator.version}</version>
+		</dependency>
+		
+		<!-- Thymeleaf Dialect Layout -->
+		<dependency>
+			<groupId>nz.net.ultraq.thymeleaf</groupId>
+			<artifactId>thymeleaf-layout-dialect</artifactId>
+			<version>${thymeleaf-dialect-layout.version}</version>
 		</dependency>
 	</dependencies>
 </project>
