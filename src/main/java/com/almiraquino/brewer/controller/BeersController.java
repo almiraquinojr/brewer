@@ -12,15 +12,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.almiraquino.brewer.model.Beer;
 
 @Controller
+@RequestMapping("/beers")
 public class BeersController {
 	
-	@RequestMapping("/beers/new")
+	@RequestMapping("/new")
 	public String newBeer(Beer beer) {
 		System.out.println(System.getProperty("classpath"));
 		return "beer/add-beer";
 	}
 	
-	@RequestMapping(value = "/beers/new", method = RequestMethod.POST)
+	@RequestMapping(value = "/new", method = RequestMethod.POST)
 	public String newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
 		if(result.hasErrors()) {
 			return newBeer(beer);
