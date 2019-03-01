@@ -17,7 +17,7 @@ public class BeersController {
 	@RequestMapping("/beers/new")
 	public String newBeer(Beer beer) {
 		System.out.println(System.getProperty("classpath"));
-		return "beer/Cadastro";
+		return "beer/add-beer";
 	}
 	
 	@RequestMapping(value = "/beers/new", method = RequestMethod.POST)
@@ -29,12 +29,7 @@ public class BeersController {
 		attributes.addFlashAttribute("message", "Beer inserted!");
 		System.out.println(">>>> Sku: " + beer.getSku());
 		System.out.println(">>>> Name: " + beer.getName());
-		return "redirect:/beers/add";
-	}
-	
-	@RequestMapping("/beers/add")
-	public String add() {
-		return "beer/add-beer";
+		return "redirect:/beers/new";
 	}
 
 }
