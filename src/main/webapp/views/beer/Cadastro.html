@@ -45,9 +45,17 @@
         <div class="row">
           <div class="col-sm-3 form-group">
             <label for="estilo">Estilo</label>
-            <select class="form-control">
-              <option value="">Selecione o estilo...</option>
-            </select>
+            <div class="bw-field-action">
+              <select class="form-control">
+                <option value="">Selecione o estilo...</option>
+              </select>
+              
+              <div class="bw-field-action__icon">
+                <a href="#" data-toggle="modal" data-target="#modalStyleFastInsert">
+                  <i class="glyphicon glyphicon-plus-sign bw-glyphicon-large"></i>
+                </a>
+              </div>
+            </div>            
           </div>
           
           <div class="col-sm-3 form-group">
@@ -60,7 +68,7 @@
           <div class="col-sm-3 form-group">
             <label for="teorAlcoolico">Teor alcoólico</label>
             <div class="input-group">
-              <input id="teorAlcoolico" type="text" class="form-control"/>
+              <input id="teorAlcoolico" type="text" class="form-control js-money"/>
               <div class="input-group-addon">%</div>
             </div>
           </div>
@@ -85,21 +93,21 @@
             <label for="preco">Preço</label>
             <div class="input-group">
               <div class="input-group-addon">R$</div>
-              <input id="preco" type="text" class="form-control"/>
+              <input id="preco" type="text" class="form-control js-money"/>
             </div>
           </div>
           
           <div class="col-sm-3 form-group">
             <label for="comissao">Comissão</label>
             <div class="input-group">
-              <input id="comissao" type="text" class="form-control"/>
+              <input id="comissao" type="text" class="form-control js-money"/>
               <div class="input-group-addon">%</div>
             </div>
           </div>
           
           <div class="col-sm-3 form-group">
             <label for="estoque">Estoque</label>
-            <input id="estoque" type="number" class="form-control"/>
+            <input id="estoque" type="text" class="form-control js-number"/>
           </div>
         </div>
         
@@ -109,6 +117,8 @@
     
       </form>
     </div>
+    
+    <div th:replace="style/style-fast-insert :: modal"></div>
   
   </section>
   
