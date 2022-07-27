@@ -1,36 +1,46 @@
 package com.almiraquino.brewer.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.validation.Valid;
 
+import com.almiraquino.brewer.model.Beer;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import com.almiraquino.brewer.model.Beer;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/beers")
 public class BeersController {
 	
-	@RequestMapping("/new")
-	public String newBeer(Beer beer) {
-		System.out.println(System.getProperty("classpath"));
+	List<Beer> beers = new ArrayList<>(Arrays.asList(
+		new Beer().withSku("12345").withName("Guinness").withDescription("Irish Stout"),
+		new Beer().withSku("54321").withName("Coors Light").withDescription("American Light Lager")
+	));
+	
+	@GetMapping("/new")
+	public String newBeer(Model model) {
+		model.addAttribute("beer", new Beer());
 		return "beer/add-beer";
 	}
 	
-	@RequestMapping(value = "/new", method = RequestMethod.POST)
-	public String newBeer(@Valid Beer beer, BindingResult result, Model model, RedirectAttributes attributes) {
-		if(result.hasErrors()) {
-			return newBeer(beer);
-		}			
-		
-		attributes.addFlashAttribute("message", "Beer inserted!");
-		System.out.println(">>>> Sku: " + beer.getSku());
-		System.out.println(">>>> Name: " + beer.getName());
-		return "redirect:/beers/new";
+	@PostMapping("/new")
+	public String newBeer(@Valid Beer beer, Model model) {
+		model.addAttribute("beer", beer);
+		beers.add(beer);
+		System.out.println("beer count = " + beers.size());
+		return "beer/add-beer";
+	}
+	
+	@GetMapping(value = "/list")
+	public String list(@RequestParam String sort, Model model) {
+		System.out.println("sort: "+sort);
+		model.addAttribute("beers", beers);
+		return "beer/list";
 	}
 
 }

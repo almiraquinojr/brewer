@@ -37,5 +37,20 @@ public class Beer {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public Beer withSku(String sku) {
+		setSku(sku);
+		return this;
+	}
+	
+	public Beer withName(String name) {
+		setName(name);
+		return this;
+	}
+	
+	public Beer withDescription(String description) {
+		setDescription(description);
+		return this;
+	}
 
 }
