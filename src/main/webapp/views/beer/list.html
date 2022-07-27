@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>list</title>
+</head>
+<body>
+    <h1>list</h1>
+    <ul th:each="beer : ${beers}">
+        <li th:text="${beer.name}"></li>
+    </ul>
+</body>
+</html>
